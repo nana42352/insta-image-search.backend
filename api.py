@@ -1,3 +1,7 @@
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
+from linebot.exceptions import LineBotApiError
+line_bot_api = LineBotApi(os.environ['LINE_CHANNEL_TOKEN'])
 import hug
 from client import IISClient
 from io import BytesIO
@@ -39,4 +43,4 @@ def callback(body, response = None):
         response.__status = HTTP_400
         # no message
         return 'NO MESSAGE'
-    line.send_response(reply_token, message)
+    line_bot_api.reply_message(reply_token, TextSendMessage(text=message))
