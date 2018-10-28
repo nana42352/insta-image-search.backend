@@ -31,8 +31,9 @@ def callback(body, response = None):
     print('おうむ返し')
     # handle API call
     print('body: {}'.format(body))
-    message = line.get_message(body)
-    print('message: {}'.format(message))
+    # message = line.get_message(body)
+    message = ""
+    # print('message: {}'.format(message))
     reply_token = line.get_reply_token(body)
     if message == None:
         response.__status = HTTP_400

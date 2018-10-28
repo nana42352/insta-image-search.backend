@@ -29,7 +29,7 @@ def send_response(reply_token, text):
         "messages": [
             {
                 "type": "text",
-                "text": text
+                "text":  "よー７３"
             }
         ]
     }
