@@ -19,6 +19,7 @@ def get_reply_token(body):
 
 
 def send_response(reply_token, text):
+    print('reply_token: {}'.format(reply_token))
     header = {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + os.environ['LINE_CHANNEL_TOKEN']
@@ -32,5 +33,8 @@ def send_response(reply_token, text):
             }
         ]
     }
+    print('header: {}'.format(header))
+    print('payload: {}'.format(payload))
+
     requests.post('https://api.line.me/v2/bot/message/reply',
                 headers=header, data=json.dumps(payload))
