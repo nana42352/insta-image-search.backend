@@ -28,6 +28,7 @@ import line
 
 @hug.post('/callback')
 def callback(body, response = None):
+    print('おうむ返し')
     # handle API call
     message = line.get_message(body)
     reply_token = line.get_reply_token(body)
