@@ -2,16 +2,15 @@ from linebot import LineBotApi
 from linebot.models import TextSendMessage
 from linebot.exceptions import LineBotApiError
 line_bot_api = LineBotApi(os.environ['LINE_CHANNEL_TOKEN'])
+
 import hug
 from client import IISClient
 from io import BytesIO
 
-iis_client = IISClient()
+qiis_client = IISClient()
 
 api = hug.API(__name__)
 api.http.add_middleware(hug.middleware.CORSMiddleware(api, max_age=1000))
-
-
 
 @hug.post('/upload')
 def upload_file(body):
@@ -42,4 +41,6 @@ def callback(body, response = None):
         response.__status = HTTP_400
         # no message
         return 'NO MESSAGE'
-    line_bot_api.reply_message(reply_token, TextSendMessage(text=message))
+    try:
+        line_bot_api.reply_message(reply_token, TextSendMessage(text=message))
+    except:
