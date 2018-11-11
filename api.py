@@ -1,6 +1,6 @@
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
-from linebot.exceptions import LineBotApiError
+from linebot.exceptions import LineBotApiError, InvalidSignatureError
 import os
 line_bot_api = LineBotApi(os.environ['LINE_CHANNEL_TOKEN'])
 
