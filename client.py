@@ -22,7 +22,7 @@ class IISClient():
 
     def __init__(self):
         # load saved images into memory here
-        # self.images = load_image_data()
+        self.images = load_image_data()
         self.result_count = 15
 
     def search_with_image(self, image):

@@ -8,7 +8,7 @@ import hug
 from client import IISClient
 from io import BytesIO
 
-qiis_client = IISClient()
+iis_client = IISClient()
 
 api = hug.API(__name__)
 api.http.add_middleware(hug.middleware.CORSMiddleware(api, max_age=1000))
@@ -34,7 +34,7 @@ import line
 def callback(body, response = None):
     message_id = line.get_message_id(body)
     print('message_id: ',message_id)
-    message_content = line_bot_api.get_message_content(message_id)
+    message_content = line_bot_api.get_message_content(message_id).content()
     print('message_content_type:',type(message_content))
     response = iis_client.search_with_image(BytesIO(message_content))
     print(response)
