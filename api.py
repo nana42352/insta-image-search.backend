@@ -32,8 +32,13 @@ import line
 
 @hug.post('/callback')
 def callback(body, response = None):
-    print(body)
-    message = line.get_message(body)
+    message_id = line.get_message_id(body)
+    print('message_id: ',message_id)
+    message_content = line_bot_api.get_message_content(message_id)
+    print('message_content_type:',type(message_content))
+    response = iis_client.search_with_image(BytesIO(message_content))
+    print(response)
+
     reply_token = line.get_reply_token(body)
     if message == None:
         response.__status = HTTP_400

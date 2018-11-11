@@ -10,6 +10,15 @@ def get_message(body):
             if 'text' in body['events'][0]['message']:
                 return body['events'][0]['message']['text']
 
+# {'events': [{'type': 'message', 'replyToken': '790a31acdb14466b8a4725f8f25ee590', 'source': {'userId': 'Uc4c7b491d2de4960c05cea92befc7ad1', 'type': 'user'}, 'timestamp': 1541940257960, 'message': {'type': 'image', 'id': '8848367976050', 'contentProvider': {'type': 'line'}}}], 'destination': 'Uc91d858bd066088970150410130e4e3d'}
+
+def get_message_id(body):
+    if 'events' in body:
+        if 'message' in body['events'][0]:
+            if 'id' in body['events'][0]['message']:
+                return body['events'][0]['message']['id']
+
+
 
 def get_reply_token(body):
     # parse send message out of JSON
