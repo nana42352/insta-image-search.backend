@@ -43,4 +43,5 @@ def callback(body, response = None):
         return 'NO MESSAGE'
     try:
         line_bot_api.reply_message(reply_token, TextSendMessage(text=message))
-    except:
+    except InvalidSignatureError:
+        abort(400)
